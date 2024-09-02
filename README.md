@@ -20,7 +20,9 @@ Effect:
       })
     );
   });
-
+```
+Implementation of recursive calls of API:  
+```
  getDashboardDataForApplicants(offset = 0): Observable<any> {
    return this.bgcService.getBackgroundCheckDashboard(SubjectTypeEnum.Applicant, offset);
  }
@@ -42,3 +44,7 @@ Effect:
    );
  }
 ```
+RxJS things:  
+- expand  
+- reduce  
+- EMPTY
