@@ -1,4 +1,4 @@
-# RxJS
+# RxJS = Reactive Extensions for JavaScript
 ## 1. Keep triggering HTTP calls in Angular until a condition is met
 Usually when you have paging or something, APIs are created to get specific amount of data per request, for example we have a limit of getting 100 records/objects per request.  
 Call this API recursively with RxJS functions.  
