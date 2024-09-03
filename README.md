@@ -20,12 +20,15 @@ Declarative programming is a programming paradigm, a style of building the struc
 Declarative programming is an abstraction of functions that underlying it is an imperative implementation.
 
 ### What is reactive programming?
+> Reactive programming is programming with **asynchronous data streams.**
+
 Reactive programming is a programming paradigm, or model, that centers around the concept of **reacting to changes in data and events**.  
 In computing, reactive programming is a declarative programming paradigm concerned with **data streams and the propagation of change**.   
 It relies on asynchronous programming logic.  
 ### What is RxJS?
 RxJS is a powerful library for web development. It's focused on managing asynchronous data streams and enabling reactive programming paradigms.
-### Why to use it?
+### Why to use it?  
+If anything in your app happens asynchronously, an RxJS Observable will **make your life easier.**   
 
 ------
 # Coding examples
