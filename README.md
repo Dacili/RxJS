@@ -32,6 +32,8 @@ If anything in your app happens asynchronously, an RxJS Observable will **make y
 
 ### Concepts:
 - #### Observable
+ > **emits a values or events**
+  
  represents the idea of an invokable collection of future values or events.
 ```
 import { Observable } from 'rxjs';
@@ -63,22 +65,44 @@ Functions **can only return one value**. Observables can return multiple:
 ![image](https://github.com/user-attachments/assets/d32fae4d-4313-4fc6-8dfe-1e8806dc2f57)
 
 - #### Observer
+ > **subscribes to observable**
+
  is a consumer of values delivered by an Observable.  
  ![image](https://github.com/user-attachments/assets/0592e133-a9c0-4691-8961-ddc3a008098d)
 
 - #### Subscription
+   > **saved instance of observer which you can use to unsubscribe**
+   
  represents the execution of an Observable, is primarily useful for cancelling (unsubscribing) the execution.  
 ```
 const subscription = observable.subscribe(x => console.log(x));
 subscription.unsubscribe();
 ```
-- #### Operators
- are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.
 - #### Subject
- is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
+  > **Observable that can have multiple subscribers**
+   
+ is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.  
+ Every Subject is an Observable.  
+ ```
+import { Subject } from 'rxjs';
+const subject = new Subject<number>();
+ 
+subject.subscribe({
+  next: (v) => console.log(`observerA: ${v}`),
+});
+subject.subscribe({
+  next: (v) => console.log(`observerB: ${v}`),
+});
+ 
+subject.next(1);
+// observerA: 1
+// observerB: 1
+```
 - #### Schedulers
  are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
 
+- #### Operators
+ are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.
 
 ------
 # Coding examples
