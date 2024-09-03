@@ -5,7 +5,8 @@ https://en.wikipedia.org/wiki/Programming_paradigm
 Types of programming paradigm:  
 ![image](https://github.com/user-attachments/assets/2230b708-cc7e-412b-ac5c-48b452619e16)
 ### Imperative vs declarative programming
-Imperative programming tells us **how to do it**, while Declarative programming tells us **what we want to happen**.  
+> Imperative programming tells us **how to do it**, while Declarative programming tells us **what we want to happen**.
+ 
 Imperative Programming provides flexibility but brings in complexity, Declarative programming hides complexity and provides simplicity.  
 In imperative you're dictating instructions, and in declarative the system knows enough to figure out instructions on its own. In an imperative approach, you're working with a blank slate.  
 ![images](https://github.com/user-attachments/assets/f4cc207a-1727-40a0-ba16-d5cc29991038)  
