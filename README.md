@@ -33,10 +33,45 @@ If anything in your app happens asynchronously, an RxJS Observable will **make y
 ### Concepts:
 - #### Observable
  represents the idea of an invokable collection of future values or events.
+```
+import { Observable } from 'rxjs';
+ 
+const observable = new Observable((subscriber) => {
+  subscriber.next(1);
+  setTimeout(() => {
+    subscriber.next(4);
+    subscriber.complete();
+  }, 1000);
+});
+```
+```
+observable.subscribe({
+  next(x) {
+    console.log('got value ' + x);
+  },
+  error(err) {
+    console.error('something wrong occurred: ' + err);
+  },
+  complete() {
+    console.log('done');
+  },
+});
+```
+**Observables vs functions:**  
+Functions **can only return one value**. Observables can return multiple:  
+![image](https://github.com/user-attachments/assets/e0f52222-a891-431a-8430-3a9b5e520924)  
+![image](https://github.com/user-attachments/assets/d32fae4d-4313-4fc6-8dfe-1e8806dc2f57)
+
 - #### Observer
- is a collection of callbacks that knows how to listen to values delivered by the Observable.
+ is a consumer of values delivered by an Observable.  
+ ![image](https://github.com/user-attachments/assets/0592e133-a9c0-4691-8961-ddc3a008098d)
+
 - #### Subscription
- represents the execution of an Observable, is primarily useful for cancelling the execution.
+ represents the execution of an Observable, is primarily useful for cancelling (unsubscribing) the execution.  
+```
+const subscription = observable.subscribe(x => console.log(x));
+subscription.unsubscribe();
+```
 - #### Operators
  are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.
 - #### Subject
