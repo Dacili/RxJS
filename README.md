@@ -78,6 +78,8 @@ Implementation of recursive calls of API:
  }
 ```
 RxJS:  
-- expand  
-- reduce  
-- EMPTY
+- **expand** - for recursion  
+  Recursively projects each source value to an Observable which is merged in the output Observable.
+- **reduce** - to combine multiple responses into one.  
+  Applies an accumulator function over the source Observable, and returns the accumulated result when the source completes, given an optional seed (initial) value.
+- **EMPTY** - A simple Observable that emits no items to the Observer and immediately emits a complete notification.
