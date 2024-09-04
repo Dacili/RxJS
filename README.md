@@ -83,6 +83,10 @@ subscription.unsubscribe();
    
  is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.  
  Every Subject is an Observable.  
+ > If you try to subscribe > 1 times to the same Observable, **only the last one will get values!** That's the reason why we need Subjects. 
+ https://stackoverflow.com/questions/36814995/multiple-subscriptions-to-observable
+
+
  ```
 import { Subject } from 'rxjs';
 const subject = new Subject<number>();
