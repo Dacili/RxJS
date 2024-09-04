@@ -25,12 +25,17 @@ Declarative programming is an abstraction of functions that underlying it is an 
 Reactive programming is a programming paradigm, or model, that centers around the concept of **reacting to changes in data and events**.  
 In computing, reactive programming is a declarative programming paradigm concerned with **data streams and the propagation of change**.   
 It relies on asynchronous programming logic.  
+
+-----
+
 ### What is RxJS?
 RxJS is a powerful library for web development. It's focused on managing asynchronous data streams and enabling reactive programming paradigms.
 ### Why to use it?  
 If anything in your app happens asynchronously, an RxJS Observable will **make your life easier.**   
 
-### Concepts:
+---
+
+### Concepts of RxJS:
 - #### Observable
  > **emits a values or events**
   
@@ -102,6 +107,16 @@ subject.next(1);
 // observerA: 1
 // observerB: 1
 ```
+**Types of subjects:**
+![image](https://github.com/user-attachments/assets/aa2bbad6-2b38-4bf6-87b0-64cbdee1ae61)  
+
+1. **BehaviorSubject** - new subscribers receive last emitted value  
+ ```const subject = new BehaviorSubject(0); // 0 is the initial value```  
+3. **ReplaySubject** - new subscribers receive last N emitted values  
+    ```const subject = new ReplaySubject(3); // buffer 3 values for new subscribers```  
+5. **AsyncSubject** - all (old + new) subscribers receive last emitted value **when** AsyncSubject ***completes***  
+    ```const subject = new AsyncSubject(); ```
+
 - #### Schedulers
  are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
 
