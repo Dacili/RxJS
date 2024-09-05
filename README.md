@@ -121,8 +121,44 @@ subject.next(1);
  are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
 
 - #### Operators
- are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.
+ are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.  
+ 
+Two kinds of operators:
+1. **Pipeable** Operators - is a function that takes an Observable as its input and returns another Observable. It is a **pure operation**: the **previous Observable stays unmodified**.
+ ```
+mediObservable.pipe(someOperator)
+```
+Ex. when operator is *filter*:  
+```
+mediObservable.pipe(filter(ev => (ev.id == id));
+```
+2. **Creation** Operators - can be called as standalone functions to create a new Observable.
+   ```
+    of(1, 2, 3) // creates an observable that will emit 1, 2, and 3
+   ```
+   
+**Marble diagrams**  
+  
+Marble Diagrams are visual representations of ***how operators work***, and include the:  
+a) **input** Observable(s),   
+b) the **operator** and its parameters, and   
+c) the **output** Observable 
+> In a marble diagram, time flows to the right, and the diagram describes how **values ("marbles")** are emitted on the Observable execution.
 
+![image](https://github.com/user-attachments/assets/da92ccb3-a548-42f6-90e2-4233c1ed3d3b)  
+
+
+**Categories of operators**:
+- Creation 
+- Join Creation
+- Transformation
+- Filtering
+- Join
+- Multicasting
+- Error Handling
+- Utility
+- Conditional and Boolean
+- Mathematical and Aggregate
 ------
 # Coding examples
 ## 1. Keep triggering HTTP calls in Angular until a condition is met
