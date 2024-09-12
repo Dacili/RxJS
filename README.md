@@ -34,7 +34,6 @@ RxJS is a powerful library for web development. It's focused on managing asynchr
 If anything in your app happens asynchronously, an RxJS Observable will **make your life easier.**   
 
 ---
-
 ### Concepts of RxJS:
 - #### Observable
  > **emits a values or events**
@@ -69,11 +68,13 @@ Functions **can only return one value**. Observables can return multiple:
 ![image](https://github.com/user-attachments/assets/e0f52222-a891-431a-8430-3a9b5e520924)  
 ![image](https://github.com/user-attachments/assets/d32fae4d-4313-4fc6-8dfe-1e8806dc2f57)
 
+
 - #### Observer
  > **subscribes to observable**
 
  is a consumer of values delivered by an Observable.  
  ![image](https://github.com/user-attachments/assets/0592e133-a9c0-4691-8961-ddc3a008098d)
+
 
 - #### Subscription
    > **saved instance of observer which you can use to unsubscribe**
@@ -83,6 +84,8 @@ Functions **can only return one value**. Observables can return multiple:
 const subscription = observable.subscribe(x => console.log(x));
 subscription.unsubscribe();
 ```
+
+
 - #### Subject
   > **Observable that can have multiple subscribers**
    
@@ -119,6 +122,7 @@ subject.next(1);
 
 - #### Schedulers
  are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
+
 
 - #### Operators
  are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.  
@@ -160,11 +164,11 @@ complete: () => console.log('Complete!') // this will be shown
 
 
 - **of** - Converts the arguments to an observable sequence.  
-     ```
-      of(10, 20, 30).subscribe(
-     {next: value => console.log(value)}
-     )
-     ```  
+```
+ of(10, 20, 30).subscribe(
+{next: value => console.log(value)}
+)
+```  
 - **defer** - Observable emits only when some Observer subscribes
 ```
 const mediDeferObs = defer(() => {
@@ -174,15 +178,15 @@ mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this
 ```  
 
 
-#### ***Join Creation***
-- Transformation
-- Filtering
-- Join
-- Multicasting
-- Error Handling
-- Utility
-- Conditional and Boolean
-- Mathematical and Aggregate
+#### ***Join Creation***  
+#### ***Transformation***  
+#### ***Filtering***  
+#### ***Join***  
+#### ***Multicasting***  
+#### ***Error Handling***  
+#### ***Utility***  
+#### ***Conditional and Boolean***  
+#### ***Mathematical and Aggregate***  
 ------
 # Coding examples
 ## 1. Keep triggering HTTP calls in Angular until a condition is met
