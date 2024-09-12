@@ -182,9 +182,19 @@ interval(1000).subscribe(x => {
     console.log(x); // we will see a number written to the console every second, starting at 0 and incrementing from there
 });
 ```
-- **timer** - 
+- **timer** - delays emitting for a certain interval of time  
+ ``` timer(dueTime, interval)```  
+  dueTime = time in milliseconds to wait before emit  
+  interval = if not provided, it will emit a 0 value and complete immediately, if provided, then it's the same as interval, it will emit a incremented value every interval time
 ```
+ timer(1000, 2000).subscribe(val => console.log(val)); // it will print 0, then after every 2 seconds,
+//it will increment the previous value (0, 1, 2...)
 
+ timer(1000).subscribe(val => console.log(val)); // it will print 0, and complete
+
+// these two are same, they never complete
+timer(0, 1000).subscribe(n => console.log('timer', n)); // 0, 1, 2...
+interval(1000).subscribe(n => console.log('interval', n)); // 0, 1, 2...
 ```  
 
 
