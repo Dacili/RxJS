@@ -158,21 +158,23 @@ complete: () => console.log('Complete!') // this will be shown
 });
 ```
 
+
 - **of** - Converts the arguments to an observable sequence.  
      ```
       of(10, 20, 30).subscribe(
      {next: value => console.log(value)}
      )
-     ```
+     ```  
 - **defer** - Observable emits only when some Observer subscribes
-  ```
-  const mediDeferObs = defer(() => {
-    return new Date(); //will capture date time at the moment of subscription
-  });
-  // ...
-  mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this subscription happened
- ```  
-- Join Creation
+```
+const mediDeferObs = defer(() => {
+  return new Date(); //will capture date time at the moment of subscription
+});
+mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this subscription happened  
+```  
+
+
+#### ***Join Creation***
 - Transformation
 - Filtering
 - Join
