@@ -177,6 +177,7 @@ const mediDeferObs = defer(() => {
 mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this subscription happened  
 ```
 - **interval** - Observable keeps emitting a value, after every 'interval of time' has passed (it's like setInterval in JS = setInterval(code, delay))
+The emitted value is *auto incrementing*.  
 ```
 interval(1000).subscribe(x => {
     console.log(x); // we will see a number written to the console every second, starting at 0 and incrementing from there
@@ -185,7 +186,7 @@ interval(1000).subscribe(x => {
 - **timer** - delays emitting for a certain interval of time  
  ``` timer(dueTime, interval)```  
   dueTime = time in milliseconds to wait before emit  
-  interval = if not provided, it will emit a 0 value and complete immediately, if provided, then it's the same as interval, it will emit a incremented value every interval time
+  interval = if not provided, it will emit a 0 value and complete immediately, if provided, then it's the same as interval, it will emit a incremented value every interval time (auto incrementing)
 ```
  timer(1000, 2000).subscribe(val => console.log(val)); // it will print 0, then after every 2 seconds,
 //it will increment the previous value (0, 1, 2...)
