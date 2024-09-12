@@ -148,8 +148,30 @@ c) the **output** Observable
 ![image](https://github.com/user-attachments/assets/da92ccb3-a548-42f6-90e2-4233c1ed3d3b)  
 
 
-**Categories of operators**:
-- Creation 
+### **Categories of operators**:
+#### ***Creation***
+- **EMPTY** - A simple Observable that emits no items to the Observer and immediately emits a complete notification. 
+```
+EMPTY.subscribe({
+next: () => console.log('Next'), // this will NOT be shown
+complete: () => console.log('Complete!') // this will be shown
+});
+```
+
+- **of** - Converts the arguments to an observable sequence.  
+     ```
+      of(10, 20, 30).subscribe(
+     {next: value => console.log(value)}
+     )
+     ```
+- **defer** - Observable emits only when some Observer subscribes
+  ```
+  const mediDeferObs = defer(() => {
+    return new Date(); //will capture date time at the moment of subscription
+  });
+  // ...
+  mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this subscription happened
+ ```  
 - Join Creation
 - Transformation
 - Filtering
