@@ -175,6 +175,16 @@ const mediDeferObs = defer(() => {
   return new Date(); //will capture date time at the moment of subscription
 });
 mediDeferObs.subscribe(x => console.log(x)); // it will show date time when this subscription happened  
+```
+- **interval** - Observable keeps emitting a value, after every 'interval of time' has passed (it's like setInterval in JS = setInterval(code, delay))
+```
+interval(1000).subscribe(x => {
+    console.log(x); // we will see a number written to the console every second, starting at 0 and incrementing from there
+});
+```
+- **timer** - 
+```
+
 ```  
 
 
