@@ -182,8 +182,9 @@ Effect:
       })
     );
   });
-```
+```  
 Implementation of recursive calls of API:  
+***offset*** - in APIs, **ignore first N objects**, ```someApi?offset=10```, will skip first 10 records, and return the rest
 ```
  getDashboardDataForApplicants(offset = 0): Observable<any> {
    return this.bgcService.getBackgroundCheckDashboard(SubjectTypeEnum.Applicant, offset);
