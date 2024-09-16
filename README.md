@@ -66,7 +66,16 @@ observable.subscribe({
 **Observables vs functions:**  
 Functions **can only return one value**. Observables can return multiple:  
 ![image](https://github.com/user-attachments/assets/e0f52222-a891-431a-8430-3a9b5e520924)  
-![image](https://github.com/user-attachments/assets/d32fae4d-4313-4fc6-8dfe-1e8806dc2f57)
+![image](https://github.com/user-attachments/assets/d32fae4d-4313-4fc6-8dfe-1e8806dc2f57)  
+  
+**Observables vs promises:**  
+https://stackoverflow.com/questions/37364973/what-is-the-difference-between-promises-and-observables  
+
+A Promise handles a **single** event when an async operation completes or fails.  
+An Observable is like a Stream (in many languages) and allows you to pass **zero or more** events where the callback is called for each event.  
+Observable is easily **cancellable**.  
+While a **Promise starts immediately**, an **Observable** only starts **if you subscribe** to it. This is why Observables are called lazy.  
+![image](https://github.com/user-attachments/assets/cd502520-de6e-45d2-9cc2-3f2b9959acbd)
 
 
 - #### Observer
