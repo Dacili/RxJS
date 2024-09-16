@@ -324,21 +324,33 @@ this.searchControl.valueChanges
 .pipe(debounceTime(2000)) // don't emit value, until 2 sec passed. Then emit latest value
 .subscribe(x => console.log(x))
 ```
-- **distinct** - 
+- **distinct** - Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items.
 
 ```
+of(1, 1, 2, 2, 2, 1, 3, 4, 3)
+  .pipe(distinct())
+  .subscribe(x => console.log(x));
+// 1, 2, 3
 ```
-- **filter** - 
+- **filter** - Filter items emitted by the source Observable by only emitting those that satisfy a specified predicate.
 
 ```
+ let id = 3;
+ of(1, 2, 3, 4).pipe(filter(x => (x == id)))
+.subscribe(x => console.log(x));
+// 3
 ```
-- **take** - 
+- **take** - Takes the first count values from the source, then completes.
 
 ```
+of(1,2,3).pipe(take(1)).subscribe(x => console.log(x));
+// 1
 ```
-- **skip** - 
+- **skip** - Returns an Observable that skips the first count items emitted by the source Observable.
 
 ```
+of(1,2,3).pipe(skip(2)).subscribe(x => console.log(x));
+// 3
 ```
 
 #### ***Join***  
