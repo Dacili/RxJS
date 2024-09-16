@@ -210,7 +210,21 @@ Observable.from([1,2,3]).subscribe(() => {})
 // These 2 are not the same, passing array as argument to both
 Observable.of([1,2,3]).subscribe(() => {}) // emits whole array at once ([1,2,3])
 Observable.from([1,2,3]).subscribe(() => {}) // emits 1 by 1 value (1 2 3)
-```  
+```
+- **throwError** - Just errors and does nothing else.   
+> A stream can error out only once. The **stream will not emit** any further values **after an error is thrown**.  
+ ```
+ return throwError(() => new Error(`Invalid time`));
+// or
+ throw new Error(`Invalid time}`);
+
+// it will be executed in the error part if implemented
+.subscribe({
+  next: console.log,
+  error: console.error
+});
+
+```   
 
 #### ***Join Creation***  
 #### ***Transformation***  
