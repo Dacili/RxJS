@@ -416,9 +416,14 @@ of(1, 2).pipe(tap(console.log)).subscribe();
 ```
 #### ***Conditional and Boolean***  
 #### ***Mathematical and Aggregate***  
-- **reduce** - 
-
+- **reduce** - Applies an accumulator function over the source Observable, and returns the accumulated result when the source completes, given an optional seed (initial) value.  
+Use it to combine values, for example, to sum numbers, or to get multiple arrays, and accumulate them into one.  
+![image](https://github.com/user-attachments/assets/dd322eb1-f2c9-4aff-a441-93372ba6ff35)  
 ```
+reduce((acc, val: any) => {
+       acc = [...acc, ...val.body]; // acc contains 1st initial value, and after that accumulated returned value
+       return acc;                  // modified acc will be forwarded to the next iteration until the observable completes
+     }, [])                         // empty arr is seed (initial) value
 ```
 - **max, min, count** - when observable completes, it returns max value, min value, or count of emitted values 
 ------
