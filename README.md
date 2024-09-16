@@ -126,7 +126,15 @@ subject.next(1);
 
 - #### Operators
  are pure functions that enable a functional programming style of dealing with collections with operations like map, filter, concat, reduce, etc.  
- 
+
+### pipe()
+.pipe() method is chained on an Observable to apply pipeable operators and return a new observable
+```
+of(1, 2, 3).pipe(map(num => num * 10)).subscribe(value => {
+   console.log(value);
+});
+```
+
 Two kinds of operators:
 1. **Pipeable** Operators - is a function that takes an Observable as its input and returns another Observable. It is a **pure operation**: the **previous Observable stays unmodified**.
  ```
@@ -335,17 +343,21 @@ const observable = new Observable((subscriber) => {
 ```
 ```
 #### ***Utility***  
-- **tap** - 
+- **tap** - Used to perform side-effects actions for values recieved from observable  
+The most common use of tap is actually **for debugging**. You can place a *tap(console.log)* anywhere in your observable pipe, log out the notifications as they are emitted by the source returned by the previous operation.
+```
+ of(1, 2).pipe(
+   tap(n => {
+     console.log(n)
+   })
+ ).subscribe();
+// or
+of(1, 2).pipe(tap(console.log)).subscribe();
+```
+- **delay** - Delays the emission of values from the Observable by a given timeout (or until a given Date)  
 
 ```
-```
-- **delay** - 
-
-```
-```
-- **timeout** - 
-
-```
+.pipe(delay(1000))
 ```
 #### ***Conditional and Boolean***  
 #### ***Mathematical and Aggregate***  
