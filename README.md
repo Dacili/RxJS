@@ -221,10 +221,40 @@ Observable.from([1,2,3]).subscribe(() => {}) // emits 1 by 1 value (1 2 3)
 // it will be executed in the error part if implemented
 .subscribe({
   next: console.log,
-  error: console.error
+  error: console.error // if you have error implemented, you can do the logic you want, and that will be executed
+// if you don't have error implemented, it will just be automatically thrown in console.log
 });
 
-```   
+```
+Creating my own observable (will emit 1, 2, and error):  
+```
+const observable = new Observable((subscriber) => {
+      subscriber.next(1);
+      subscriber.next(2);
+  throw new Error(`Invalid time}`);
+});
+// 1st implementation
+    observable.subscribe(x => {
+      console.log(x) // here we don't implement error, and by default it will be logged in console log, even if we don't have this line console.log
+    })
+// 2nd implementation
+    observable.subscribe({
+      next: console.log,
+      error: console.error // here we implemented error, it will console error 
+    })
+// 3rd implementation
+  observable.subscribe({
+    next(x) {
+      console.log('got value ' + x);
+    },
+    error(err) {
+      console.error('something wrong occurred: ' + err); //  here we implemented error, we could add logic, whatever we want, this will shown error in the way we implemented it
+    },
+    complete() {
+      console.log('done');
+    },
+  });
+```
 
 #### ***Join Creation***  
 #### ***Transformation***  
