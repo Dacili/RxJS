@@ -314,9 +314,9 @@ const observable = new Observable((subscriber) => {
 ```
 
 #### ***Filtering***  
-- **debounceTime** - It's like delay, but passes only the most recent notification from each burst of emissions.
-In delay, it only delays the emitting of the value. All values are emitted.  
-In debounce time, it does not emit value, until time is elapsed, and there is no new value emitted during that time.
+- **debounceTime** - It's like delay, but passes only the most recent notification from each burst of emissions.  
+In delay, it only delays the emitting of the value. All values are emitted.    
+In debounce time, it does not emit value, until time is elapsed, and there is no new value emitted during that time.  
 If a new value is emitted during that time, then time starts ticking again before emitting the most recent one.  
 
 ```
