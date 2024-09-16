@@ -228,6 +228,11 @@ Observable.from([1,2,3]).subscribe(() => {})
 Observable.of([1,2,3]).subscribe(() => {}) // emits whole array at once ([1,2,3])
 Observable.from([1,2,3]).subscribe(() => {}) // emits 1 by 1 value (1 2 3)
 ```
+- **fromEvent** - creates observable from event  
+ ```
+const clicks = fromEvent(document, 'click');
+clicks.subscribe(x => console.log(x));
+```  
 - **throwError** - Just errors and does nothing else.   
 > A stream can error out only once. The **stream will not emit** any further values **after an error is thrown**.  
  ```
@@ -309,9 +314,15 @@ const observable = new Observable((subscriber) => {
 ```
 
 #### ***Filtering***  
-- **debounceTime** - 
+- **debounceTime** - It's like delay, but passes only the most recent notification from each burst of emissions.
+In delay, it only delays the emitting of the value. All values are emitted.  
+In debounce time, it does not emit value, until time is elapsed, and there is no new value emitted during that time.
+If a new value is emitted during that time, then time starts ticking again before emitting the most recent one.  
 
 ```
+this.searchControl.valueChanges
+.pipe(debounceTime(2000)) // don't emit value, until 2 sec passed. Then emit latest value
+.subscribe(x => console.log(x))
 ```
 - **distinct** - 
 
