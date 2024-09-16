@@ -347,27 +347,13 @@ const observable = new Observable((subscriber) => {
 
 ```
 ```
-- **toArray** - 
-
-```
-```
 #### ***Conditional and Boolean***  
-- **find** - 
-
-```
-```
-- **isEmpty** - 
-
-```
-```
 #### ***Mathematical and Aggregate***  
-
 - **reduce** - 
 
 ```
 ```
 - **max, min, count** - when observable completes, it returns max value, min value, or count of emitted values 
-
 ------
 # Coding examples
 ## 1. Keep triggering HTTP calls in Angular until a condition is met
