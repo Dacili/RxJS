@@ -197,7 +197,20 @@ interval(1000).subscribe(x => {
 timer(0, 1000).subscribe(n => console.log('timer', n)); // 0, 1, 2...
 interval(1000).subscribe(n => console.log('interval', n)); // 0, 1, 2...
 ```  
+- **from** - Creates an Observable from an **Array, an array-like object, a Promise, an iterable object, or an Observable-like object.**  
+> *of vs from*: of always accepts **only values** and performs no conversion. You can't forward Promise or Observable objects to *of*.  
+ ```
+const result = from([10, 20, 30]);
+result.subscribe(x => console.log(x));
 
+// These 2 are the same (second is getting array as argument, first is not)
+Observable.of(1,2,3).subscribe(() => {})
+Observable.from([1,2,3]).subscribe(() => {})
+
+// These 2 are not the same, passing array as argument to both
+Observable.of([1,2,3]).subscribe(() => {}) // emits whole array at once ([1,2,3])
+Observable.from([1,2,3]).subscribe(() => {}) // emits 1 by 1 value (1 2 3)
+```  
 
 #### ***Join Creation***  
 #### ***Transformation***  
