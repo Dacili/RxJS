@@ -334,13 +334,36 @@ const observable = new Observable((subscriber) => {
 #### ***Multicasting***  
 
 #### ***Error Handling***  
-- **catchError** - 
+- **catchError** - Catches errors on the observable to be handled by:
+  
+a) returning a new observable
+```
+// emit 1, 2, 3, on 4 error is thrown
+  catchError(err => of('new', 'obs', 'emit')) // catch, create new obs, continue to emit values
+// 1, 2, 3, new, obs, emit
+```
+   b) throwing an error 
+```
+ catchError(err => {
+      throw 'error Medi: ' + err; // catch, edit error, rethrow
+    })
+// 1, 2, 3, error Medi: four! 
+```
+- **retry** - *if an error happens*, it will resubscribe to the observable for the N times, and return combined values.
+> If there is no error occurred, retry will not be executed
+
+All items emitted by the source Observable will be emitted by the resulting Observable, even those emitted during failed subscriptions.  
+ For example, if an Observable fails at first but emits [1, 2] then succeeds the second time and emits: [1, 2, 3, 4, 5, complete] then the complete stream of emissions and notifications would be: [1, 2, 1, 2, 3, 4, 5, complete].
 
 ```
-```
-- **retry** - 
-
-```
+    of(1, 2).pipe(
+      tap(n => {
+        console.log(n)
+        throw new Error('medi err'); // if we did not have this line, retry would not be executed
+      }),
+      retry(3)
+    ).subscribe();
+// 1, 1, 1, 1
 ```
 #### ***Utility***  
 - **tap** - Used to perform side-effects actions for values recieved from observable  
