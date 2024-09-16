@@ -286,6 +286,10 @@ const observable = new Observable((subscriber) => {
 
 ```
 ```
+- **expand** - 
+
+```
+```
 
 #### ***Filtering***  
 - **debounceTime** - 
