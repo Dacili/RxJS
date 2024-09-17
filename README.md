@@ -279,21 +279,44 @@ const observable = new Observable((subscriber) => {
 ```
 
 #### ***Join Creation***  
-- **combineLatest** - 
+- **forkJoin** - wait for multiple observables completion, and use last emitted values as result  
+
+If we send **object**, the result is object. We can name however we want (the properties of the object)
 
 ```
+const observable = forkJoin({
+  medi1: of(1, 2, 3, 4),
+  medi2: Promise.resolve(8),
+  daci: timer(4000)
+});
+observable.subscribe({
+ next: value => console.log(value),
+ complete: () => console.log('This is how it ends!'),
+});
+ 
+// { medi1: 4, medi2: 8, daci: 0 } after 4 seconds, object
+// 'This is how it ends!' immediately after
 ```
-- **concat** - 
+If we send **array**, result is array:  
+```
+const observable = forkJoin([
+  of(1, 2, 3, 4),
+  Promise.resolve(8),
+  timer(4000)
+]);
+// [4, 8, 0] array
+```
+- **concat** - first emits all values from first observable until it completes, then from the second same  
 
 ```
+concat(of(0,1), of(3,4)).subscribe(x => console.log(x))
+// 0,1,3,4
 ```
-- **forkJoin** - 
-
+- **merge** - running multiple observables at the same time, creates new observable that merge them  
+It is similar like concat, but concat waits for the first one to complete, while merge emits as obs emits, and does not wait for one to be completed, it fires emissions as they come. 
 ```
-```
-- **merge** - 
-
-```
+merge(of(1), of(3, 4)).subscribe(x => console.log(x))
+// 1, 3, 4
 ```
 #### ***Transformation***  
 - **map** - 
