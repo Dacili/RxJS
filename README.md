@@ -319,21 +319,32 @@ merge(of(1), of(3, 4)).subscribe(x => console.log(x))
 // 1, 3, 4
 ```
 #### ***Transformation***  
-- **map** - 
+- **map** - it's like map in js, iterates trough values of observable, and returns new observable  
+In JS ```map vs forEach```:  
+  ```map``` - returns new list, and does not mutate original one  
+  ```forEach``` - mutates original list
 
 ```
+of(1,2,3).pipe(map(x => x*2))
+.subscribe(x => console.log(x))
+// 2, 4, 6
 ```
-- **concatMap** - 
+- **switchMap** - for every value of the first observable, it does the operation defined in the output observable (switchMap), and emits the modified values
 
 ```
+of(1,2,3).pipe(switchMap(x => of(x**2, x**3)))
+.subscribe(x => console.log(x))
+// 1, 1, 4, 8, 9, 27
 ```
-- **switchMap** - 
+- **expand** - used for recursion until defined condition is met 
 
 ```
-```
-- **expand** - 
-
-```
+.pipe(
+     expand((data) =>
+       data.length < limit // condition
+         ? EMPTY           // end the recursion
+         : this.getDashboardDataForApplicants((offset += limit)) // continue to call recursive function
+     )
 ```
 
 #### ***Filtering***  
