@@ -377,14 +377,6 @@ of(1,2,3).pipe(skip(2)).subscribe(x => console.log(x));
 ```
 
 #### ***Join***  
-- **mergeAll** - 
-
-```
-```
-- **combineLatestAll** - 
-
-```
-```
 
 #### ***Multicasting***  
 
