@@ -451,7 +451,12 @@ reduce((acc, val: any) => {
        return acc;                  // modified acc will be forwarded to the next iteration until the observable completes
      }, [])                         // empty arr is seed (initial) value
 ```
-- **max, min, count** - when observable completes, it returns max value, min value, or count of emitted values 
+- **max, min, count** - when observable completes, it returns max value, min value, or count of emitted values
+------
+# If you are unsure which operator do you need, you can use Operator Decision Tree
+https://rxjs.dev/operator-decision-tree  
+It's very cool, it asks you questions, what do you want to achieve, and returns the needed operator.  
+
 ------
 # Coding examples
 ## 1. Keep triggering HTTP calls in Angular until a condition is met
