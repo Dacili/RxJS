@@ -306,7 +306,7 @@ const observable = forkJoin([
 ]);
 // [4, 8, 0] array
 ```
-- **concat** - first emits all values from first observable until it completes, then from the second same  
+- **concat** - emits all values from first observable until it completes, then from the second same  
 
 ```
 concat(of(0,1), of(3,4)).subscribe(x => console.log(x))
